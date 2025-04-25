@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    container_name: tui-robo-email
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - .:/app
+      - ./downloads:/app/downloads
+      - ./logs:/app/logs
+      - ./service-account.json:/app/service-account.json:ro
+    env_file:
+      - .env
+    restart: unless-stopped
